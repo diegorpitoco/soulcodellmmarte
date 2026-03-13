@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+    GUIA RÁPIDO (index.html)
+    1) Cada bloco principal está marcado como "SEÇÃO X".
+    2) Textos da apresentação ficam no <main>.
+    3) O widget flutuante do agente fica no final do <body>.
+    4) Navegação do topo usa âncoras (#projeto, #agentes...).
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Landing page acadêmica do Grupo Marte no Bootcamp LLM SoulCode sobre Inovação, Capital e Sustentabilidade na NEOOH." />
+  <title>Grupo Marte | NEOOH x SoulCode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="space-canvas" aria-hidden="true"></canvas>
+  <div class="mars-background" aria-hidden="true">
+    <div class="mars-orbit">
+      <div class="mars">
+        <span class="mars__texture"></span>
+        <span class="mars__storm"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: HEADER FIXO COM NAVEGAÇÃO PRINCIPAL -->
+  <header class="header" id="topo">
+    <div class="container header__content">
+      <div class="logo">NEOOH × SoulCode</div>
+      <span class="badge">Grupo Marte 🚀</span>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#projeto">Projeto</a>
+        <a href="#agentes">Agentes</a>
+        <a href="#tripulacao">Tripulação</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#referencias">Referências</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SEÇÃO 2: HERO COM PROPOSTA CENTRAL DO PROJETO -->
+    <section class="section section--hero reveal" id="projeto" aria-labelledby="hero-title">
+      <div class="container hero">
+        <h1 id="hero-title">Inovação, Capital e Sustentabilidade</h1>
+        <p class="hero__subtitle">Sistema Multiagente com IA aplicado à NEOOH</p>
+        <p class="hero__text">
+          Projeto acadêmico do Bootcamp LLM SoulCode Academy — Grupo Marte. Uma solução inteligente com
+          Agente Orquestrador e dois Agentes Especialistas, alimentados por base documental pública da NEOOH.
+        </p>
+        <div class="hero__chips" aria-label="Destaques do projeto">
+          <span>🤖 Multiagente</span>
+          <span>📄 Base Documental</span>
+          <span>🌿 ESG & Carbon Free</span>
+        </div>
+        <a class="btn" href="#agentes">Explorar o Projeto</a>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: TRIPULAÇÃO COM MEMBROS DO GRUPO -->
+    <section class="section section--alt reveal" id="tripulacao" aria-labelledby="tripulacao-title">
+      <div class="container">
+        <h2 id="tripulacao-title">Tripulação do Grupo Marte 🚀</h2>
+        <div class="crew-grid">
+          <article class="crew-card">
+            <div class="astronaut astronaut--deyse" aria-hidden="true">
+              <div class="astronaut__pack"></div>
+              <div class="astronaut__helmet"><span class="astronaut__visor"></span><span class="astronaut__shine"></span></div>
+              <div class="astronaut__body"></div>
+              <span class="astronaut__arm astronaut__arm--left"></span>
+              <span class="astronaut__arm astronaut__arm--right"></span>
+              <span class="astronaut__leg astronaut__leg--left"></span>
+              <span class="astronaut__leg astronaut__leg--right"></span>
+            </div>
+            <h3>Deyse</h3>
+            <p class="crew-role">Pesquisadora & Engenheira de Agente</p>
+            <ul class="crew-tasks">
+              <li>Coleta de dados e pesquisa NEOOH</li>
+              <li>Criação e construção dos agentes</li>
+              <li>Testes com perguntas direcionadas</li>
+            </ul>
+          </article>
+          <article class="crew-card">
+            <div class="astronaut astronaut--diego" aria-hidden="true">
+              <div class="astronaut__pack"></div>
+              <div class="astronaut__helmet"><span class="astronaut__visor"></span><span class="astronaut__shine"></span></div>
+              <div class="astronaut__body"></div>
+              <span class="astronaut__arm astronaut__arm--left"></span>
+              <span class="astronaut__arm astronaut__arm--right"></span>
+              <span class="astronaut__leg astronaut__leg--left"></span>
+              <span class="astronaut__leg astronaut__leg--right"></span>
+            </div>
+            <h3>Diego</h3>
+            <p class="crew-role">Desenvolvedor & Pesquisador</p>
+            <ul class="crew-tasks">
+              <li>Coleta de dados</li>
+              <li>Pesquisa ESG & Carbon Free</li>
+              <li>Desenvolvimento do site (HTML, CSS e JS)</li>
+            </ul>
+          </article>
+          <article class="crew-card">
+            <div class="astronaut astronaut--felipe" aria-hidden="true">
+              <div class="astronaut__pack"></div>
+              <div class="astronaut__helmet"><span class="astronaut__visor"></span><span class="astronaut__shine"></span></div>
+              <div class="astronaut__body"></div>
+              <span class="astronaut__arm astronaut__arm--left"></span>
+              <span class="astronaut__arm astronaut__arm--right"></span>
+              <span class="astronaut__leg astronaut__leg--left"></span>
+              <span class="astronaut__leg astronaut__leg--right"></span>
+            </div>
+            <h3>Felipe ⭐</h3>
+            <p class="crew-role">Capitão / Líder</p>
+            <ul class="crew-tasks">
+              <li>Coleta de dados</li>
+              <li>Construção do agente</li>
+              <li>Integração com o agente</li>
+              <li>Vídeo e gestão do Trello</li>
+            </ul>
+          </article>
+          <article class="crew-card">
+            <div class="astronaut astronaut--heron" aria-hidden="true">
+              <div class="astronaut__pack"></div>
+              <div class="astronaut__helmet"><span class="astronaut__visor"></span><span class="astronaut__shine"></span></div>
+              <div class="astronaut__body"></div>
+              <span class="astronaut__arm astronaut__arm--left"></span>
+              <span class="astronaut__arm astronaut__arm--right"></span>
+              <span class="astronaut__leg astronaut__leg--left"></span>
+              <span class="astronaut__leg astronaut__leg--right"></span>
+            </div>
+            <h3>Heron</h3>
+            <p class="crew-role">Engenheiro de Plataforma & Designer</p>
+            <ul class="crew-tasks">
+              <li>Plataforma Google, deploy no GCP</li>
+              <li>HTML/CSS e integração com o agente</li>
+              <li>Figma e apresentação</li>
+            </ul>
+          </article>
+          <article class="crew-card">
+            <div class="astronaut astronaut--lucinaira" aria-hidden="true">
+              <div class="astronaut__pack"></div>
+              <div class="astronaut__helmet"><span class="astronaut__visor"></span><span class="astronaut__shine"></span></div>
+              <div class="astronaut__body"></div>
+              <span class="astronaut__arm astronaut__arm--left"></span>
+              <span class="astronaut__arm astronaut__arm--right"></span>
+              <span class="astronaut__leg astronaut__leg--left"></span>
+              <span class="astronaut__leg astronaut__leg--right"></span>
+            </div>
+            <h3>Lucinaira</h3>
+            <p class="crew-role">Engenheira de Agente & Dados</p>
+            <ul class="crew-tasks">
+              <li>Construção do agente</li>
+              <li>Definição de prompts e buckets</li>
+              <li>Testes com perguntas direcionadas</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: SOBRE O PROJETO E INDICADORES PRINCIPAIS -->
+    <section class="section reveal" aria-labelledby="sobre-title">
+      <div class="container">
+        <h2 id="sobre-title">Sobre o Projeto</h2>
+        <p class="section-text">
+          A NEOOH é a maior empresa brasileira de mídia Out of Home, líder em mídia aeroportuária e terminais
+          rodoviários, com mais de 46 mil telas digitais e 800 milhões de impactos anuais. Este projeto propõe
+          um sistema de IA generativa multiagente capaz de responder perguntas sobre dois temas estratégicos da
+          empresa: Ofertas Públicas e ESG & Carbon Free.
+        </p>
+        <div class="stats-grid">
+          <article class="stat-card"><h3>📡 +46 mil telas digitais</h3><p>Rede ativa em pontos estratégicos de OOH.</p></article>
+          <article class="stat-card"><h3>👥 +800 mi impactos/ano</h3><p>Alcance anual em mídia e experiências digitais.</p></article>
+          <article class="stat-card"><h3>🌿 100% Carbon Free</h3><p>Compromisso público com sustentabilidade operacional.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: OBJETIVO DA SOLUÇÃO MULTIAGENTE -->
+    <section class="section section--alt reveal" aria-labelledby="objetivo-title">
+      <div class="container">
+        <h2 id="objetivo-title">Objetivo da Solução</h2>
+        <p class="section-text">
+          Desenvolver um agente de IA generativa capaz de responder perguntas específicas sobre a NEOOH, com base
+          em documentos públicos oficiais, sem alucinação e com respostas confiáveis.
+        </p>
+        <ul class="objective-list">
+          <li>✅ Responder perguntas sobre Carbon Free e ESG da NEOOH</li>
+          <li>✅ Responder perguntas sobre CRI, debêntures e ofertas públicas</li>
+          <li>✅ Usar apenas informações documentadas e verificáveis</li>
+          <li>✅ Demonstrar arquitetura multiagente com orquestração</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: ARQUITETURA MULTIAGENTE EM FLUXO TOP-DOWN -->
+    <section class="section reveal" id="agentes" aria-labelledby="arquitetura-title">
+      <div class="container">
+        <h2 id="arquitetura-title">Arquitetura Multiagente</h2>
+        <div class="flow">
+          <article class="flow-card flow-card--user">
+            <h3>[USUÁRIO]</h3>
+          </article>
+          <div class="flow-arrow">↓</div>
+          <article class="flow-card flow-card--orq">
+            <h3>[AGENTE ORQUESTRADOR]</h3>
+            <p>Recebe a pergunta, analisa o tema e direciona para o especialista correto.</p>
+          </article>
+          <div class="flow-split">
+            <div class="flow-branch">
+              <div class="flow-arrow">↓</div>
+              <article class="flow-card flow-card--esp1">
+                <h3>[ESPECIALISTA 1]</h3>
+                <p><strong>Ofertas Públicas</strong><br />CRI, Debêntures, Mercado Capitais</p>
+              </article>
+            </div>
+            <div class="flow-branch">
+              <div class="flow-arrow">↓</div>
+              <article class="flow-card flow-card--esp2">
+                <h3>[ESPECIALISTA 2]</h3>
+                <p><strong>ESG & Carbon Free</strong><br />Carbon Free, Instituto NEOOH, Governança</p>
+              </article>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <article class="flow-card flow-card--data">
+            <h3>[DATA STORE]</h3>
+            <p>Base documental com PDFs públicos da NEOOH indexados no Vertex AI.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 7: ÁREA RESERVADA PARA FUTURA INTEGRAÇÃO COM IA -->
+    <section class="section section--alt reveal" aria-labelledby="ia-title">
+      <div class="container">
+        <h2 id="ia-title">Converse com o Agente NEOOH</h2>
+        <p class="section-text">[ Área reservada para integração com Vertex AI Agent Builder ]</p>
+        <div class="ia-placeholder">
+          <div class="ia-placeholder__icon">🤖</div>
+          <p>
+            Esta seção será integrada ao agente desenvolvido no Vertex AI Agent Builder. Em produção, o usuário
+            poderá enviar perguntas e receber respostas baseadas nos documentos públicos da NEOOH.
+          </p>
+          <span class="badge badge--dev">Em desenvolvimento</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 8: DIFERENCIAIS DO PROJETO -->
+    <section class="section reveal" id="diferenciais" aria-labelledby="diferenciais-title">
+      <div class="container">
+        <h2 id="diferenciais-title">Diferenciais</h2>
+        <div class="diff-grid">
+          <article class="diff-card"><h3>🎯 Sem Alucinação</h3><p>O agente responde apenas com base no Data Store documentado.</p></article>
+          <article class="diff-card"><h3>📚 Base Documental Real</h3><p>Alimentado com fontes públicas oficiais da NEOOH.</p></article>
+          <article class="diff-card"><h3>🏗️ Arquitetura Profissional</h3><p>Orquestrador + 2 especialistas no Vertex AI.</p></article>
+          <article class="diff-card"><h3>🌿 Tema Relevante</h3><p>ESG e mercado de capitais são temas estratégicos do setor.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 9: REFERÊNCIAS COM LINKS OFICIAIS -->
+    <section class="section section--alt reveal" id="referencias" aria-labelledby="referencias-title">
+      <div class="container">
+        <h2 id="referencias-title">Referências</h2>
+        <ul class="refs-list">
+          <li>🔗 <a target="_blank" rel="noopener noreferrer" href="https://neooh.com.br/">NEOOH — Site Oficial</a></li>
+          <li>🔗 <a target="_blank" rel="noopener noreferrer" href="https://neooh.com.br/trends/co2/">NEOOH — Carbon Free / CO2</a></li>
+          <li>🔗 <a target="_blank" rel="noopener noreferrer" href="https://neooh.com.br/noticia/neooh-cria-instituto-com-foco-no-combate-a-desigualdade-social/">NEOOH — Instituto NEOOH</a></li>
+          <li>🔗 <a target="_blank" rel="noopener noreferrer" href="https://neooh.com.br/ofertas-publicas">NEOOH — Ofertas Públicas</a></li>
+          <li>🔗 <a target="_blank" rel="noopener noreferrer" href="https://www.meioemensagem.com.br/home/midia/2022/08/03/os-caminhos-para-a-midia-ooh-se-tornar-mais-sustentavel.html">Meio & Mensagem — OOH Sustentável</a></li>
+          <li>🔗 <a target="_blank" rel="noopener noreferrer" href="https://www.intelligentcio.com/latam/2021/07/29/neooh-becomes-the-first-ooh-company-in-the-world-to-neutralize-100-of-its-carbon-footprint/">Intelligent CIO LATAM — Carbon Free</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- WIDGET FLUTUANTE: AGENTE SEMPRE VISÍVEL NO CANTO INFERIOR DIREITO -->
+  <aside class="agent-float" aria-label="Widget flutuante do agente">
+    <div class="agent-float__header">
+      <strong>🤖 Agente NEOOH</strong>
+      <span>Online</span>
+    </div>
+    <p class="agent-float__text">
+      Assistente em modo protótipo. Esta área permanecerá visível durante toda a navegação.
+    </p>
+    <div id="agent-float-messages" class="agent-float__messages" aria-live="polite">
+      <div class="agent-msg agent-msg--agent">
+        Olá! Sou o assistente do protótipo. Posso responder com base no Data Store documental da NEOOH.
+      </div>
+    </div>
+    <form id="agent-float-form" class="agent-float__form">
+      <label for="agent-float-input" class="sr-only">Pergunta para o agente</label>
+      <input id="agent-float-input" type="text" placeholder="Digite sua pergunta..." />
+      <button type="submit">Perguntar</button>
+    </form>
+    <small class="agent-float__status">Base: Data Store documental da NEOOH</small>
+  </aside>
+
+  <!-- SEÇÃO 10: FOOTER INSTITUCIONAL DO PROJETO -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Grupo Marte · Bootcamp LLM SoulCode Academy</p>
+      <p>Projeto acadêmico — NEOOH · Tema 4: Inovação, Capital e Sustentabilidade</p>
+    </div>
+  </footer>
+
+  <!--
+    Arquivo opcional:
+    - agents-data.js: fornece base de respostas do chat.
+    - Se remover, o chat continua funcionando, mas responderá apenas fallback genérico.
+  -->
+  <script src="agents-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
