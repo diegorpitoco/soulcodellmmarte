@@ -365,6 +365,11 @@ li {
   border: 1px solid transparent;
 }
 
+.crew-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .crew-role {
   font-weight: 600;
   color: var(--creme);
