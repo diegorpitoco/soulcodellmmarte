@@ -3,8 +3,15 @@
 // 1) Canvas: gradiente + estrelas (createStars/drawBackground/drawStars).
 // 2) Animacao de entrada das secoes: initRevealObserver().
 // 3) Movimento do widget no scroll: initFloatingAgentMotion().
-// 4) Chat do widget: initFloatingAgentChat() (usa agents-data.js quando existe).
+// 4) Chat do widget: initFloatingAgentChat() (integra com o backend Flask).
 // ==================================================
+// Sessão persistente para o chat do agente
+const sessionId =
+  localStorage.getItem("chat_session") ||
+  (window.crypto && crypto.randomUUID ? crypto.randomUUID() : `session-${Date.now()}-${Math.random()}`);
+
+localStorage.setItem("chat_session", sessionId);
+
 // ==================================================
 // FUNDO EM CANVAS: GRADIENTE + ESTRELAS
 // Observacao: o planeta Marte esta em CSS (camada .mars-background).
@@ -148,25 +155,30 @@ function initFloatingAgentChat() {
   const form = document.getElementById("agent-float-form");
   const input = document.getElementById("agent-float-input");
   const messages = document.getElementById("agent-float-messages");
+  const widget = document.querySelector(".agent-float");
+  const statusEl = document.getElementById("agent-status");
+  const toggleBtn = document.getElementById("agent-toggle");
   if (!form || !input || !messages) return;
 
-  // Se existir base local (agents-data.js), usamos respostas documentadas.
-  const store =
-    window.BOOTCAMP_AGENTS && window.BOOTCAMP_AGENTS.ofertas_publicas
-      ? window.BOOTCAMP_AGENTS.ofertas_publicas
-      : null;
+  const fallbackMessage =
+    "Não encontrei exatamente essa informação. Talvez você queira perguntar sobre ofertas públicas ou ESG da NEOOH.";
 
-  // Mensagem de seguranca quando nao houver cobertura para a pergunta.
-  const fallback = store
-    ? store.fallback
-    : "Este agente responde apenas com base no Data Store público da NEOOH e não possui informações suficientes para responder essa pergunta com segurança.";
+  function setAgentStatus(text) {
+    if (statusEl) {
+      statusEl.textContent = text;
+    }
+  }
 
-  function normalize(text) {
-    return (text || "")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
+  function pulseWidget() {
+    if (!widget) return;
+    widget.classList.remove("agent-highlight");
+    void widget.offsetWidth;
+    widget.classList.add("agent-highlight");
+    const handleAnimationEnd = () => {
+      widget.classList.remove("agent-highlight");
+      widget.removeEventListener("animationend", handleAnimationEnd);
+    };
+    widget.addEventListener("animationend", handleAnimationEnd);
   }
 
   function appendMessage(text, sender) {
@@ -175,39 +187,61 @@ function initFloatingAgentChat() {
     bubble.textContent = text;
     messages.appendChild(bubble);
     messages.scrollTop = messages.scrollHeight;
-  }
-
-  function findAnswer(question) {
-    if (!store || !store.qa) return fallback;
-    const qNorm = normalize(question);
-    if (!qNorm) return fallback;
-
-    for (const item of store.qa) {
-      const candidates = [item.pergunta].concat(item.aliases || []).map(normalize);
-      const matched = candidates.some(
-        (c) => qNorm === c || qNorm.includes(c) || c.includes(qNorm)
-      );
-      if (matched) return item.resposta;
+    if (sender === "agent") {
+      setAgentStatus("Status: pronto para mais perguntas.");
+      pulseWidget();
     }
-
-    return fallback;
   }
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const question = input.value.trim();
     if (!question) return;
 
+    setAgentStatus("Status: pesquisando fontes...");
     appendMessage(question, "user");
-    const answer = findAnswer(question);
 
-    window.setTimeout(() => {
-      appendMessage(answer, "agent");
-    }, 180);
+    const typing = document.createElement("div");
+    typing.className = "agent-msg agent-msg--agent typing";
+    typing.textContent = "Digitando...";
+    messages.appendChild(typing);
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      const response = await fetch("/perguntar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pergunta: question,
+          session_id: sessionId,
+        }),
+      });
+
+      const data = await response.json();
+      typing.remove();
+      appendMessage(data.resposta || fallbackMessage, "agent");
+    } catch (error) {
+      typing.remove();
+      appendMessage("Erro ao conectar com o agente.", "agent");
+      setAgentStatus("Status: indisponível no momento.");
+    }
 
     input.value = "";
     input.focus();
   });
+
+  if (toggleBtn && widget) {
+    let collapsed = false;
+    toggleBtn.addEventListener("click", () => {
+      collapsed = !collapsed;
+      widget.classList.toggle("agent-float--collapsed", collapsed);
+      toggleBtn.textContent = collapsed ? "+" : "−";
+      toggleBtn.setAttribute("aria-expanded", String(!collapsed));
+      toggleBtn.setAttribute("aria-label", collapsed ? "Maximizar agente" : "Minimizar agente");
+    });
+  }
+
+  setAgentStatus("Status: pronto para conversar.");
 }
 
 // Inicialização geral.
@@ -217,4 +251,3 @@ initRevealObserver();
 initFloatingAgentMotion();
 initFloatingAgentChat();
 window.addEventListener("resize", resizeCanvas);
-

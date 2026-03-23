@@ -51,7 +51,7 @@
         <p class="hero__subtitle">Sistema Multiagente com IA aplicado à NEOOH</p>
         <p class="hero__text">
           Projeto acadêmico do Bootcamp LLM SoulCode Academy — Grupo Marte. Uma solução inteligente com
-          Agente Orquestrador e dois Agentes Especialistas, alimentados por base documental pública da NEOOH.
+          um agente único multi-expertise, alimentado por base documental pública da NEOOH para temas estratégicos.
         </p>
         <div class="hero__chips" aria-label="Destaques do projeto">
           <span>🤖 Multiagente</span>
@@ -77,8 +77,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3>Deyse</h3>
-            <p class="crew-role">Pesquisadora & Engenheira de Agente</p>
+<h3><a href="https://www.linkedin.com/in/deyse-santos-novais-898694110/" target="_blank" rel="noopener noreferrer">Deyse</a></h3>            <p class="crew-role">Pesquisadora & Engenheira de Agente</p>
             <ul class="crew-tasks">
               <li>Coleta de dados e pesquisa NEOOH</li>
               <li>Criação e construção dos agentes</li>
@@ -95,7 +94,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3>Diego</h3>
+            <h3><a href="https://www.linkedin.com/in/diego-reis-pitoco/" target="_blank" rel="noopener noreferrer">Diego</a></h3>
             <p class="crew-role">Desenvolvedor & Pesquisador</p>
             <ul class="crew-tasks">
               <li>Coleta de dados</li>
@@ -113,7 +112,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3>Felipe ⭐</h3>
+            <h3><a href="https://www.linkedin.com/in/felipebarbozadeoliveira" target="_blank" rel="noopener noreferrer">Felipe ⭐</a></h3>
             <p class="crew-role">Capitão / Líder</p>
             <ul class="crew-tasks">
               <li>Coleta de dados</li>
@@ -132,7 +131,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3>Heron</h3>
+            <h3><a href="https://www.linkedin.com/in/heronmaturanajr" target="_blank" rel="noopener noreferrer">Heron</a></h3>
             <p class="crew-role">Engenheiro de Plataforma & Designer</p>
             <ul class="crew-tasks">
               <li>Plataforma Google, deploy no GCP</li>
@@ -150,7 +149,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3>Lucinaira</h3>
+            <h3><a href="https://br.linkedin.com/in/lucinaira-s-51b510202" target="_blank" rel="noopener noreferrer">Lucinaira</a></h3>
             <p class="crew-role">Engenheira de Agente & Dados</p>
             <ul class="crew-tasks">
               <li>Construção do agente</li>
@@ -192,7 +191,7 @@
           <li>✅ Responder perguntas sobre Carbon Free e ESG da NEOOH</li>
           <li>✅ Responder perguntas sobre CRI, debêntures e ofertas públicas</li>
           <li>✅ Usar apenas informações documentadas e verificáveis</li>
-          <li>✅ Demonstrar arquitetura multiagente com orquestração</li>
+          <li>✅ Demonstrar arquitetura multiagente centrada em um agente único integrador</li>
         </ul>
       </div>
     </section>
@@ -201,70 +200,114 @@
     <section class="section reveal" id="agentes" aria-labelledby="arquitetura-title">
       <div class="container">
         <h2 id="arquitetura-title">Arquitetura Multiagente</h2>
+        <p class="section-text">
+          A pergunta chega direto ao Agente NEOOH, que reúne orquestração e especialização internamente para
+          responder sem precisar de múltiplos agentes externos.
+        </p>
         <div class="flow">
           <article class="flow-card flow-card--user">
             <h3>[USUÁRIO]</h3>
+            <p>Digita a pergunta sobre NEOOH.</p>
           </article>
           <div class="flow-arrow">↓</div>
-          <article class="flow-card flow-card--orq">
-            <h3>[AGENTE ORQUESTRADOR]</h3>
-            <p>Recebe a pergunta, analisa o tema e direciona para o especialista correto.</p>
+          <article class="flow-card flow-card--agent">
+            <h3>[AGENTE NEOOH]</h3>
+            <p>Analisa tema, roteia internamente e responde com o domínio correto.</p>
+            <ul class="agent-expertise">
+              <li><strong>Ofertas Públicas</strong> — CRI, Debêntures, Mercado Capitais</li>
+              <li><strong>ESG & Carbon Free</strong> — Carbon Free, Instituto NEOOH, Governança</li>
+            </ul>
           </article>
-          <div class="flow-split">
-            <div class="flow-branch">
-              <div class="flow-arrow">↓</div>
-              <article class="flow-card flow-card--esp1">
-                <h3>[ESPECIALISTA 1]</h3>
-                <p><strong>Ofertas Públicas</strong><br />CRI, Debêntures, Mercado Capitais</p>
-              </article>
-            </div>
-            <div class="flow-branch">
-              <div class="flow-arrow">↓</div>
-              <article class="flow-card flow-card--esp2">
-                <h3>[ESPECIALISTA 2]</h3>
-                <p><strong>ESG & Carbon Free</strong><br />Carbon Free, Instituto NEOOH, Governança</p>
-              </article>
-            </div>
-          </div>
           <div class="flow-arrow">↓</div>
           <article class="flow-card flow-card--data">
             <h3>[DATA STORE]</h3>
             <p>Base documental com PDFs públicos da NEOOH indexados no Vertex AI.</p>
           </article>
         </div>
+        <p class="section-note">
+          Todo o fluxo é entregue por um mesmo agente, que combina capacidade de classificação de tema com acesso
+          ao Data Store verificado. Não há um agente orquestrador separado.
+        </p>
       </div>
     </section>
 
-    <!-- SEÇÃO 7: ÁREA RESERVADA PARA FUTURA INTEGRAÇÃO COM IA -->
-    <section class="section section--alt reveal" aria-labelledby="ia-title">
-      <div class="container">
-        <h2 id="ia-title">Converse com o Agente NEOOH</h2>
-        <p class="section-text">[ Área reservada para integração com Vertex AI Agent Builder ]</p>
-        <div class="ia-placeholder">
-          <div class="ia-placeholder__icon">🤖</div>
-          <p>
-            Esta seção será integrada ao agente desenvolvido no Vertex AI Agent Builder. Em produção, o usuário
-            poderá enviar perguntas e receber respostas baseadas nos documentos públicos da NEOOH.
-          </p>
-          <span class="badge badge--dev">Em desenvolvimento</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 8: DIFERENCIAIS DO PROJETO -->
+   
+    <!-- SEÇÃO 7: DIFERENCIAIS DO PROJETO -->
     <section class="section reveal" id="diferenciais" aria-labelledby="diferenciais-title">
       <div class="container">
         <h2 id="diferenciais-title">Diferenciais</h2>
         <div class="diff-grid">
           <article class="diff-card"><h3>🎯 Sem Alucinação</h3><p>O agente responde apenas com base no Data Store documentado.</p></article>
           <article class="diff-card"><h3>📚 Base Documental Real</h3><p>Alimentado com fontes públicas oficiais da NEOOH.</p></article>
-          <article class="diff-card"><h3>🏗️ Arquitetura Profissional</h3><p>Orquestrador + 2 especialistas no Vertex AI.</p></article>
+          <article class="diff-card"><h3>🏗️ Arquitetura Profissional</h3><p>Agente único multi-expertise no Vertex AI, com roteamento interno.</p></article>
           <article class="diff-card"><h3>🌿 Tema Relevante</h3><p>ESG e mercado de capitais são temas estratégicos do setor.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 9: REFERÊNCIAS COM LINKS OFICIAIS -->
+    <!-- SEÇÃO: ORIENTAÇÃO, MENTORIA E PATROCÍNIO -->
+    <section class="section reveal" id="mentoria">
+      <div class="container">
+        <div class="mentoria-card-pro">
+
+          <h2>🎓 Orientação, Mentoria & Parceria</h2>
+
+          <p class="mentoria-text">
+            Este projeto foi desenvolvido no contexto do Bootcamp de LLMs com Inteligência Artificial,
+            com orientação da professora
+            <strong>
+              <a href="https://www.linkedin.com/in/alanis-urquisa/" target="_blank">
+                Alanis Urquisa
+              </a>
+            </strong>,
+            cuja mentoria foi essencial para a definição da arquitetura multiagente e evolução técnica da equipe.
+          </p>
+
+          <!-- BLOCO DE PARCERIA -->
+          <div class="mentoria-partners">
+
+            <!-- Professora -->
+            <div class="partner-card">
+              <div class="partner-icon">👩‍🏫</div>
+              <div>
+                <strong>Mentoria Acadêmica</strong>
+                <p>
+                  <a href="https://www.linkedin.com/in/alanis-urquisa/" target="_blank">
+                    Alanis Urquisa
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <!-- SoulCode -->
+            <div class="partner-card">
+              <div class="partner-logo">
+                <img src="https://media.licdn.com/dms/image/C4D0BAQFq5r1w4n6p6A/company-logo_200_200/0/1630464685390/soulcode_academy_logo?e=2147483647&v=beta&t=example"
+                     alt="SoulCode Academy">
+              </div>
+              <div>
+                <strong>Bootcamp & Patrocínio</strong>
+                <p>
+                  <a href="https://www.linkedin.com/company/soulcodeacademy/" target="_blank">
+                    SoulCode Academy
+                  </a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mentoria-badges">
+            <span class="badge badge--mentoria">Mentoria Acadêmica</span>
+            <span class="badge badge--soulcode">Bootcamp SoulCode</span>
+            <span class="badge badge--ia">IA Generativa</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 8: REFERÊNCIAS COM LINKS OFICIAIS -->
     <section class="section section--alt reveal" id="referencias" aria-labelledby="referencias-title">
       <div class="container">
         <h2 id="referencias-title">Referências</h2>
@@ -284,11 +327,20 @@
   <aside class="agent-float" aria-label="Widget flutuante do agente">
     <div class="agent-float__header">
       <strong>🤖 Agente NEOOH</strong>
-      <span>Online</span>
+      <div class="agent-float__header-actions">
+        <span class="agent-float__online">Online</span>
+        <button
+          type="button"
+          id="agent-toggle"
+          class="agent-float__toggle"
+          aria-expanded="true"
+          aria-label="Minimizar agente"
+        >
+          −
+        </button>
+      </div>
     </div>
-    <p class="agent-float__text">
-      Assistente em modo protótipo. Esta área permanecerá visível durante toda a navegação.
-    </p>
+    <div id="agent-status" class="agent-float__state" aria-live="polite">Status: pronto para conversar.</div>
     <div id="agent-float-messages" class="agent-float__messages" aria-live="polite">
       <div class="agent-msg agent-msg--agent">
         Olá! Sou o assistente do protótipo. Posso responder com base no Data Store documental da NEOOH.
@@ -297,9 +349,15 @@
     <form id="agent-float-form" class="agent-float__form">
       <label for="agent-float-input" class="sr-only">Pergunta para o agente</label>
       <input id="agent-float-input" type="text" placeholder="Digite sua pergunta..." />
-      <button type="submit">Perguntar</button>
+      <button type="submit" aria-label="Enviar pergunta">
+        <span aria-hidden="true">🚀</span>
+      </button>
     </form>
+    <div class="agent-float__cta">
+      <a class="btn btn--ghost" href="#referencias">Ver referências</a>
+    </div>
     <small class="agent-float__status">Base: Data Store documental da NEOOH</small>
+    <span class="agent-float__mini-icon" aria-hidden="true">👽</span>
   </aside>
 
   <!-- SEÇÃO 10: FOOTER INSTITUCIONAL DO PROJETO -->
