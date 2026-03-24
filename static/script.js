@@ -162,6 +162,8 @@ function initFloatingAgentChat() {
 
   const fallbackMessage =
     "Não encontrei exatamente essa informação. Talvez você queira perguntar sobre ofertas públicas ou ESG da NEOOH.";
+  const fallbackSuggestion =
+    "Você pode conferir a seção Referências abaixo ou ajustar o termo para obter mais resultados.";
 
   function setAgentStatus(text) {
     if (statusEl) {
@@ -219,7 +221,11 @@ function initFloatingAgentChat() {
 
       const data = await response.json();
       typing.remove();
-      appendMessage(data.resposta || fallbackMessage, "agent");
+      const responseText = data.resposta || fallbackMessage;
+      appendMessage(responseText, "agent");
+      if (!data.resposta) {
+        appendMessage(fallbackSuggestion, "agent");
+      }
     } catch (error) {
       typing.remove();
       appendMessage("Erro ao conectar com o agente.", "agent");

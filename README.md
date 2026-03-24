@@ -6,6 +6,7 @@ O front-end permanece como uma única landing page, mas agora o Flask serve `tem
 
 - `templates/index.html` → HTML renderizado pelo `render_template("index.html")`.
 - `static/style.css`, `static/script.js`, `static/agents-data.js` → assets referenciados dentro do template via `url_for('static', ...)`.
+- `static/assets/soulcode.png` → logotipo do SoulCode usado na seção de mentoria (adicione o arquivo manualmente ao copiar o projeto).
 - `app.py` → controla as rotas `/` e `/perguntar`, chama o Dialogflow CX e responde ao widget.
 - `Procfile` + `requirements.txt` → suportam o deploy (Gunicorn + dependências).
 

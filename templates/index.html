@@ -35,9 +35,11 @@
       <span class="badge">Grupo Marte 🚀</span>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#projeto">Projeto</a>
-        <a href="#agentes">Agentes</a>
         <a href="#tripulacao">Tripulação</a>
+        <a href="#sobre">Sobre o Projeto</a>
+        <a href="#agentes">Agentes</a>
         <a href="#diferenciais">Diferenciais</a>
+        <a href="#mentoria">Mentoria</a>
         <a href="#referencias">Referências</a>
       </nav>
     </div>
@@ -149,7 +151,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3><a href="https://br.linkedin.com/in/lucinaira-s-51b510202" target="_blank" rel="noopener noreferrer">Lucinaira</a></h3>
+            <h3><a href="https://www.linkedin.com/in/lucinaira-sousa-51b510202/" target="_blank" rel="noopener noreferrer">Lucinaira</a></h3>
             <p class="crew-role">Engenheira de Agente & Dados</p>
             <ul class="crew-tasks">
               <li>Construção do agente</li>
@@ -162,7 +164,7 @@
     </section>
 
     <!-- SEÇÃO 4: SOBRE O PROJETO E INDICADORES PRINCIPAIS -->
-    <section class="section reveal" aria-labelledby="sobre-title">
+    <section class="section reveal" id="sobre" aria-labelledby="sobre-title">
       <div class="container">
         <h2 id="sobre-title">Sobre o Projeto</h2>
         <p class="section-text">
@@ -224,10 +226,36 @@
             <p>Base documental com PDFs públicos da NEOOH indexados no Vertex AI.</p>
           </article>
         </div>
-        <p class="section-note">
-          Todo o fluxo é entregue por um mesmo agente, que combina capacidade de classificação de tema com acesso
-          ao Data Store verificado. Não há um agente orquestrador separado.
+        <p class="section-note flow-note">
+          Todo o fluxo é entregue por um mesmo agente que combina classificação de tema, expertise e acesso ao Data Store verificado. Não há um agente orquestrador separado.
         </p>
+      </div>
+    </section>
+
+    <section class="section section--flow reveal" aria-labelledby="fluxo-title">
+      <div class="container">
+        <h2 id="fluxo-title">Fluxo do Usuário</h2>
+        <p class="section-text">
+          O usuário pergunta direto ao Agente NEOOH, que combina orquestração, expertise em temas estratégicos e acesso ao
+          Data Store oficial para responder sem abrir mão da confiabilidade.
+        </p>
+        <div class="flow-path">
+          <article>
+            <span role="img" aria-hidden="true">🧭</span>
+            <h3>1. Pergunta</h3>
+            <p>O usuário escreve uma dúvida sobre Ofertas Públicas ou ESG & Carbon Free.</p>
+          </article>
+          <article>
+            <span role="img" aria-hidden="true">🧠</span>
+            <h3>2. Agente único</h3>
+            <p>Processa o tema, aplica buckets de prompt e consulta o Data Store indexado no Vertex AI.</p>
+          </article>
+          <article>
+            <span role="img" aria-hidden="true">📚</span>
+            <h3>3. Resposta documentada</h3>
+            <p>Devolve uma resposta embasada e, quando necessário, sugere referências oficiais.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -281,10 +309,9 @@
 
             <!-- SoulCode -->
             <div class="partner-card">
-              <div class="partner-logo">
-                <img src="https://media.licdn.com/dms/image/C4D0BAQFq5r1w4n6p6A/company-logo_200_200/0/1630464685390/soulcode_academy_logo?e=2147483647&v=beta&t=example"
-                     alt="SoulCode Academy">
-              </div>
+                <div class="partner-logo">
+                  <img src="{{ url_for('static', filename='assets/soulcode.png') }}" alt="SoulCode Academy">
+                </div>
               <div>
                 <strong>Bootcamp & Patrocínio</strong>
                 <p>
@@ -341,6 +368,9 @@
       </div>
     </div>
     <div id="agent-status" class="agent-float__state" aria-live="polite">Status: pronto para conversar.</div>
+    <div class="agent-float__trust">
+      <span>✔</span> Base oficial NEOOH
+    </div>
     <div id="agent-float-messages" class="agent-float__messages" aria-live="polite">
       <div class="agent-msg agent-msg--agent">
         Olá! Sou o assistente do protótipo. Posso responder com base no Data Store documental da NEOOH.
