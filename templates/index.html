@@ -5,8 +5,7 @@
     GUIA RÁPIDO (index.html)
     1) Cada bloco principal está marcado como "SEÇÃO X".
     2) Textos da apresentação ficam no <main>.
-    3) O widget flutuante do agente fica no final do <body>.
-    4) Navegação do topo usa âncoras (#projeto, #agentes...).
+    3) Navegação do topo usa âncoras (#projeto, #agentes...).
   -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=restaurado" />
 </head>
 <body>
   <canvas id="space-canvas" aria-hidden="true"></canvas>
@@ -67,7 +67,11 @@
     <!-- SEÇÃO 3: TRIPULAÇÃO COM MEMBROS DO GRUPO -->
     <section class="section section--alt reveal" id="tripulacao" aria-labelledby="tripulacao-title">
       <div class="container">
-        <h2 id="tripulacao-title">Tripulação do Grupo Marte 🚀</h2>
+        <div class="crew-banner reveal">
+          <h2 id="tripulacao-title">Tripulação do Grupo Marte 🚀</h2>
+          <p>Equipe multidisciplinar responsável por desenvolver, testar e integrar o agente ao ecossistema NEOOH.</p>
+          <span class="crew-banner__badge">+ Inteligência + Confiabilidade</span>
+        </div>
         <div class="crew-grid">
           <article class="crew-card">
             <div class="astronaut astronaut--deyse" aria-hidden="true">
@@ -350,46 +354,6 @@
     </section>
   </main>
 
-  <!-- WIDGET FLUTUANTE: AGENTE SEMPRE VISÍVEL NO CANTO INFERIOR DIREITO -->
-  <aside class="agent-float" aria-label="Widget flutuante do agente">
-    <div class="agent-float__header">
-      <strong>🤖 Agente NEOOH</strong>
-      <div class="agent-float__header-actions">
-        <span class="agent-float__online">Online</span>
-        <button
-          type="button"
-          id="agent-toggle"
-          class="agent-float__toggle"
-          aria-expanded="true"
-          aria-label="Minimizar agente"
-        >
-          −
-        </button>
-      </div>
-    </div>
-    <div id="agent-status" class="agent-float__state" aria-live="polite">Status: pronto para conversar.</div>
-    <div class="agent-float__trust">
-      <span>✔</span> Base oficial NEOOH
-    </div>
-    <div id="agent-float-messages" class="agent-float__messages" aria-live="polite">
-      <div class="agent-msg agent-msg--agent">
-        Olá! Sou o assistente do protótipo. Posso responder com base no Data Store documental da NEOOH.
-      </div>
-    </div>
-    <form id="agent-float-form" class="agent-float__form">
-      <label for="agent-float-input" class="sr-only">Pergunta para o agente</label>
-      <input id="agent-float-input" type="text" placeholder="Digite sua pergunta..." />
-      <button type="submit" aria-label="Enviar pergunta">
-        <span aria-hidden="true">🚀</span>
-      </button>
-    </form>
-    <div class="agent-float__cta">
-      <a class="btn btn--ghost" href="#referencias">Ver referências</a>
-    </div>
-    <small class="agent-float__status">Base: Data Store documental da NEOOH</small>
-    <span class="agent-float__mini-icon" aria-hidden="true">👽</span>
-  </aside>
-
   <!-- SEÇÃO 10: FOOTER INSTITUCIONAL DO PROJETO -->
   <footer class="footer">
     <div class="container">
@@ -398,12 +362,46 @@
     </div>
   </footer>
 
-  <!--
-    Arquivo opcional:
-    - agents-data.js: fornece base de respostas do chat.
-    - Se remover, o chat continua funcionando, mas responderá apenas fallback genérico.
-  -->
-  <script src="{{ url_for('static', filename='agents-data.js') }}"></script>
+  <!-- INTEGRAÇÃO NATIVA DO DIALOGFLOW MESSENGER (VERSÃO FUNCIONAL) -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <df-messenger
+    project-id="bootcam-llm-ai3"
+    agent-id="5688b4d8-4a0d-44e6-bc68-186e09039d8e"
+    language-code="pt-br"
+    max-query-length="-1">
+    <df-messenger-chat-bubble
+      chat-title="🤖 Agente NEOOH"
+      icon="{{ url_for('static', filename='assets/soulcode.png') }}">
+    </df-messenger-chat-bubble>
+  </df-messenger>
+  <style>
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+
+      /* Estilização customizada para o tema do Grupo Marte */
+      --df-messenger-font-family: 'Inter', sans-serif;
+      --df-messenger-chat-background: rgba(15, 15, 30, 0.95);
+      --df-messenger-titlebar-background: rgba(10, 8, 26, 0.95);
+      --df-messenger-titlebar-font-color: #ffffff;
+      --df-messenger-titlebar-icon-color: #ffffff;
+      --df-messenger-message-bot-background: rgba(91, 44, 125, 0.85);
+      --df-messenger-message-bot-font-color: #ffffff;
+      --df-messenger-message-user-background: rgba(233, 30, 140, 0.85);
+      --df-messenger-message-user-font-color: #ffffff;
+      --df-messenger-chat-bubble-background: #e91e8c;
+      --df-messenger-send-icon-color: #e91e8c;
+
+      /* Acabamento refinado imitando o widget antigo */
+      --df-messenger-window-border-radius: 16px;
+      --df-messenger-window-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      --df-messenger-titlebar-title-font-weight: 700;
+      --df-messenger-message-bubble-border-radius: 12px;
+    }
+  </style>
+
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

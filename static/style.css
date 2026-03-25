@@ -11,19 +11,19 @@
    Para mudar a identidade visual, ajuste apenas este bloco.
 ================================================== */
 :root {
-  --roxo-escuro: #4a1a6b;
+  --roxo-escuro: #310b4f; /* Mais escuro para maior contraste */
   --roxo-medio: #5b2c7d;
   --rosa-forte: #d946a6;
-  --rosa-neon: #e91e8c;
+  --rosa-neon: #ff1fb3; /* Rosa mais vibrante e elétrico */
   --branco: #ffffff;
-  --creme: #efedde;
+  --creme: #fafafa; /* Branco suave para textos, melhor contraste */
   --azul: #0000ff;
   --marte-escuro: #c1440e;
   --marte-claro: #ff7b54;
 
   --fundo-card: rgba(255, 255, 255, 0.05);
   --borda-card: rgba(255, 255, 255, 0.18);
-  --texto-soft: rgba(255, 255, 255, 0.85);
+  --texto-soft: #f0f0f0; /* Remove transparência para nitidez */
   --sombra: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
@@ -35,6 +35,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 18px; /* Aumenta a base de todas as fontes do site (padrão é 16px) */
 }
 
 body {
@@ -207,6 +208,7 @@ h1,
 h2,
 h3 {
   line-height: 1.2;
+  text-shadow: 0 0 8px rgba(233, 30, 140, 0.35); /* Adiciona um brilho para destacar o texto */
 }
 
 h1 {
@@ -249,6 +251,7 @@ li {
 .logo {
   font-weight: 800;
   letter-spacing: 0.02em;
+  font-size: 16px;
 }
 
 .badge {
@@ -257,6 +260,10 @@ li {
   border-radius: 999px;
   padding: 6px 12px;
   font-size: 0.82rem;
+}
+
+.header .badge {
+  font-size: 13px;
 }
 
 .nav {
@@ -269,7 +276,7 @@ li {
   color: var(--creme);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 14.4px;
   padding: 8px 10px;
   border-radius: 999px;
   cursor: pointer;
@@ -832,123 +839,6 @@ li {
   margin-top: 4px;
 }
 
-/* ==================================================
-   WIDGET FLUTUANTE DO AGENTE
-   Fica fixo no canto inferior direito da tela.
-================================================== */
-.agent-float__header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.agent-float__toggle {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(20, 20, 40, 0.8);
-  color: var(--branco);
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.agent-float__toggle:hover {
-  transform: scale(1.05);
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.agent-float__state {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 10px;
-}
-
-.agent-float__messages {
-  max-height: 220px;
-  overflow-y: auto;
-  display: grid;
-  gap: 8px;
-  padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  margin-bottom: 9px;
-  scroll-behavior: smooth;
-}
-
-.agent-float__cta {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.btn--ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--branco);
-  background: rgba(255, 255, 255, 0.06);
-  font-weight: 600;
-  text-decoration: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.btn--ghost:hover {
-  border-color: var(--rosa-neon);
-  background: rgba(233, 30, 140, 0.12);
-}
-
-.agent-float--collapsed .agent-float__messages,
-.agent-float--collapsed .agent-float__form,
-.agent-float--collapsed .agent-float__cta,
-.agent-float--collapsed .agent-float__state,
-.agent-float--collapsed .agent-float__status {
-  display: none;
-}
-
-.agent-float__mini-icon {
-  display: none;
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-}
-
-.agent-float--collapsed .agent-float__mini-icon {
-  display: flex;
-}
-
-.agent-highlight {
-  animation: agentPulse 0.8s ease;
-}
-
-.agent-float__trust {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.agent-float__trust span {
-  font-size: 1rem;
-}
-
 .section--flow {
   background: rgba(6, 3, 12, 0.65);
 }
@@ -984,103 +874,6 @@ li {
   max-width: 520px;
   margin-inline: auto;
   display: block;
-}
-
-.agent-highlight .agent-msg--agent {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
-.agent-float__form {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 7px;
-}
-.agent-float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width: min(360px, calc(100vw - 24px));
-  z-index: 30;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  padding: 12px;
-  will-change: transform;
-}
-
-.agent-float__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.agent-float__header span {
-  font-size: 0.74rem;
-  color: #9affc8;
-  border: 1px solid rgba(154, 255, 200, 0.35);
-  border-radius: 999px;
-  padding: 2px 8px;
-}
-
-.agent-float__text {
-  font-size: 0.84rem;
-  margin-bottom: 9px;
-}
-
-.agent-msg {
-  max-width: 90%;
-  border-radius: 12px;
-  padding: 8px 10px;
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
-.agent-msg--agent {
-  justify-self: start;
-  color: #f2e7ff;
-  background: rgba(91, 44, 125, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.agent-msg--user {
-  justify-self: end;
-  color: #fff;
-  background: rgba(233, 30, 140, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.agent-float__form input {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--branco);
-  padding: 10px;
-}
-
-.agent-float__form button {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  border-radius: 50%;
-  color: var(--branco);
-  font-size: 1.2rem;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  background: linear-gradient(100deg, var(--rosa-neon), var(--rosa-forte));
-  box-shadow: 0 8px 15px rgba(233, 30, 140, 0.4);
-}
-
-.agent-float__status {
-  display: block;
-  margin-top: 8px;
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.76);
 }
 
 /* ==================================================
@@ -1128,21 +921,6 @@ li {
   50% { transform: translateY(-6px); }
 }
 
-@keyframes agentPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-  }
-}
-
 /* ==================================================
    RESPONSIVO
 ================================================== */
@@ -1181,21 +959,56 @@ li {
     flex-wrap: nowrap;
   }
 
-  .crew-grid,
-  .diff-grid {
-    grid-template-columns: 1fr;
-  }
+.crew-grid,
+.diff-grid {
+  grid-template-columns: 1fr;
+}
+
+.crew-banner {
+  position: relative;
+  border-radius: 28px;
+  padding: 3rem 2rem 2.5rem;
+  background:
+    linear-gradient(130deg, rgba(5, 4, 12, 0.9), rgba(15, 15, 40, 0.85)),
+    url("../assets/astronautas.jpeg") center/cover;
+  color: var(--branco);
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.crew-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(5, 5, 12, 0.6));
+  mix-blend-mode: soft-light;
+}
+
+.crew-banner > * {
+  position: relative;
+  z-index: 1;
+}
+
+.crew-banner__badge {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 14px;
+  margin-top: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+}
 
   .mars-orbit {
     width: 340px;
     height: 340px;
     top: 18%;
     right: -36px;
-  }
-
-  .agent-float {
-    right: 12px;
-    bottom: 12px;
-    width: calc(100vw - 24px);
   }
 }

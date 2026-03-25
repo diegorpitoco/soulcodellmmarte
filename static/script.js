@@ -1,16 +1,8 @@
-﻿// ==================================================
+﻿﻿// ==================================================
 // GUIA RAPIDO (script.js)
 // 1) Canvas: gradiente + estrelas (createStars/drawBackground/drawStars).
 // 2) Animacao de entrada das secoes: initRevealObserver().
-// 3) Movimento do widget no scroll: initFloatingAgentMotion().
-// 4) Chat do widget: initFloatingAgentChat() (integra com o backend Flask).
 // ==================================================
-// Sessão persistente para o chat do agente
-const sessionId =
-  localStorage.getItem("chat_session") ||
-  (window.crypto && crypto.randomUUID ? crypto.randomUUID() : `session-${Date.now()}-${Math.random()}`);
-
-localStorage.setItem("chat_session", sessionId);
 
 // ==================================================
 // FUNDO EM CANVAS: GRADIENTE + ESTRELAS
@@ -112,148 +104,8 @@ function initRevealObserver() {
   sections.forEach((section) => observer.observe(section));
 }
 
-// ==================================================
-// MOVIMENTO SUAVE DO WIDGET FLUTUANTE NO SCROLL
-// ==================================================
-function initFloatingAgentMotion() {
-  const widget = document.querySelector(".agent-float");
-  if (!widget) return;
-
-  let lastY = window.scrollY;
-  let targetShift = 0;
-  let currentShift = 0;
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const nowY = window.scrollY;
-      const delta = nowY - lastY;
-      lastY = nowY;
-
-      // Direção do scroll define o impulso do movimento.
-      targetShift += Math.max(-10, Math.min(10, delta * 0.2));
-      targetShift = Math.max(-16, Math.min(16, targetShift));
-    },
-    { passive: true }
-  );
-
-  function animateWidget() {
-    // Inércia: aproxima suavemente da meta e volta ao centro.
-    currentShift += (targetShift - currentShift) * 0.08;
-    targetShift *= 0.92;
-    widget.style.transform = `translateY(${currentShift.toFixed(2)}px)`;
-    requestAnimationFrame(animateWidget);
-  }
-
-  animateWidget();
-}
-
-// ==================================================
-// CHAT DO WIDGET FLUTUANTE (HISTÓRICO COM ROLAGEM)
-// ==================================================
-function initFloatingAgentChat() {
-  const form = document.getElementById("agent-float-form");
-  const input = document.getElementById("agent-float-input");
-  const messages = document.getElementById("agent-float-messages");
-  const widget = document.querySelector(".agent-float");
-  const statusEl = document.getElementById("agent-status");
-  const toggleBtn = document.getElementById("agent-toggle");
-  if (!form || !input || !messages) return;
-
-  const fallbackMessage =
-    "Não encontrei exatamente essa informação. Talvez você queira perguntar sobre ofertas públicas ou ESG da NEOOH.";
-  const fallbackSuggestion =
-    "Você pode conferir a seção Referências abaixo ou ajustar o termo para obter mais resultados.";
-
-  function setAgentStatus(text) {
-    if (statusEl) {
-      statusEl.textContent = text;
-    }
-  }
-
-  function pulseWidget() {
-    if (!widget) return;
-    widget.classList.remove("agent-highlight");
-    void widget.offsetWidth;
-    widget.classList.add("agent-highlight");
-    const handleAnimationEnd = () => {
-      widget.classList.remove("agent-highlight");
-      widget.removeEventListener("animationend", handleAnimationEnd);
-    };
-    widget.addEventListener("animationend", handleAnimationEnd);
-  }
-
-  function appendMessage(text, sender) {
-    const bubble = document.createElement("div");
-    bubble.className = `agent-msg agent-msg--${sender}`;
-    bubble.textContent = text;
-    messages.appendChild(bubble);
-    messages.scrollTop = messages.scrollHeight;
-    if (sender === "agent") {
-      setAgentStatus("Status: pronto para mais perguntas.");
-      pulseWidget();
-    }
-  }
-
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const question = input.value.trim();
-    if (!question) return;
-
-    setAgentStatus("Status: pesquisando fontes...");
-    appendMessage(question, "user");
-
-    const typing = document.createElement("div");
-    typing.className = "agent-msg agent-msg--agent typing";
-    typing.textContent = "Digitando...";
-    messages.appendChild(typing);
-    messages.scrollTop = messages.scrollHeight;
-
-    try {
-      const response = await fetch("/perguntar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          pergunta: question,
-          session_id: sessionId,
-        }),
-      });
-
-      const data = await response.json();
-      typing.remove();
-      const responseText = data.resposta || fallbackMessage;
-      appendMessage(responseText, "agent");
-      if (!data.resposta) {
-        appendMessage(fallbackSuggestion, "agent");
-      }
-    } catch (error) {
-      typing.remove();
-      appendMessage("Erro ao conectar com o agente.", "agent");
-      setAgentStatus("Status: indisponível no momento.");
-    }
-
-    input.value = "";
-    input.focus();
-  });
-
-  if (toggleBtn && widget) {
-    let collapsed = false;
-    toggleBtn.addEventListener("click", () => {
-      collapsed = !collapsed;
-      widget.classList.toggle("agent-float--collapsed", collapsed);
-      toggleBtn.textContent = collapsed ? "+" : "−";
-      toggleBtn.setAttribute("aria-expanded", String(!collapsed));
-      toggleBtn.setAttribute("aria-label", collapsed ? "Maximizar agente" : "Minimizar agente");
-    });
-  }
-
-  setAgentStatus("Status: pronto para conversar.");
-}
-
 // Inicialização geral.
 resizeCanvas();
 render();
 initRevealObserver();
-initFloatingAgentMotion();
-initFloatingAgentChat();
 window.addEventListener("resize", resizeCanvas);
