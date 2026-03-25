@@ -5,8 +5,7 @@
     GUIA RÁPIDO (index.html)
     1) Cada bloco principal está marcado como "SEÇÃO X".
     2) Textos da apresentação ficam no <main>.
-    3) O widget flutuante do agente fica no final do <body>.
-    4) Navegação do topo usa âncoras (#projeto, #agentes...).
+    3) Navegação do topo usa âncoras (#projeto, #agentes...).
   -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=restaurado" />
 </head>
 <body>
   <canvas id="space-canvas" aria-hidden="true"></canvas>
@@ -35,9 +35,11 @@
       <span class="badge">Grupo Marte 🚀</span>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#projeto">Projeto</a>
-        <a href="#agentes">Agentes</a>
         <a href="#tripulacao">Tripulação</a>
+        <a href="#sobre">Sobre o Projeto</a>
+        <a href="#agentes">Agentes</a>
         <a href="#diferenciais">Diferenciais</a>
+        <a href="#mentoria">Mentoria</a>
         <a href="#referencias">Referências</a>
       </nav>
     </div>
@@ -51,7 +53,7 @@
         <p class="hero__subtitle">Sistema Multiagente com IA aplicado à NEOOH</p>
         <p class="hero__text">
           Projeto acadêmico do Bootcamp LLM SoulCode Academy — Grupo Marte. Uma solução inteligente com
-          Agente Orquestrador e dois Agentes Especialistas, alimentados por base documental pública da NEOOH.
+          um agente único multi-expertise, alimentado por base documental pública da NEOOH para temas estratégicos.
         </p>
         <div class="hero__chips" aria-label="Destaques do projeto">
           <span>🤖 Multiagente</span>
@@ -65,7 +67,11 @@
     <!-- SEÇÃO 3: TRIPULAÇÃO COM MEMBROS DO GRUPO -->
     <section class="section section--alt reveal" id="tripulacao" aria-labelledby="tripulacao-title">
       <div class="container">
-        <h2 id="tripulacao-title">Tripulação do Grupo Marte 🚀</h2>
+        <div class="crew-banner reveal">
+          <h2 id="tripulacao-title">Tripulação do Grupo Marte 🚀</h2>
+          <p>Equipe multidisciplinar responsável por desenvolver, testar e integrar o agente ao ecossistema NEOOH.</p>
+          <span class="crew-banner__badge">+ Inteligência + Confiabilidade</span>
+        </div>
         <div class="crew-grid">
           <article class="crew-card">
             <div class="astronaut astronaut--deyse" aria-hidden="true">
@@ -77,8 +83,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3><a href="https://www.linkedin.com/in/deyse-santos-novais-898694110/" target="_blank" rel="noopener noreferrer">Deyse</a></h3>
-            <p class="crew-role">Pesquisadora & Engenheira de Agente</p>
+<h3><a href="https://www.linkedin.com/in/deyse-santos-novais-898694110/" target="_blank" rel="noopener noreferrer">Deyse</a></h3>            <p class="crew-role">Pesquisadora & Engenheira de Agente</p>
             <ul class="crew-tasks">
               <li>Coleta de dados e pesquisa NEOOH</li>
               <li>Criação e construção dos agentes</li>
@@ -150,7 +155,7 @@
               <span class="astronaut__leg astronaut__leg--left"></span>
               <span class="astronaut__leg astronaut__leg--right"></span>
             </div>
-            <h3><a href="https://br.linkedin.com/in/lucinaira-s-51b510202" target="_blank" rel="noopener noreferrer">Lucinaira</a></h3>
+            <h3><a href="https://www.linkedin.com/in/lucinaira-sousa-51b510202/" target="_blank" rel="noopener noreferrer">Lucinaira</a></h3>
             <p class="crew-role">Engenheira de Agente & Dados</p>
             <ul class="crew-tasks">
               <li>Construção do agente</li>
@@ -163,7 +168,7 @@
     </section>
 
     <!-- SEÇÃO 4: SOBRE O PROJETO E INDICADORES PRINCIPAIS -->
-    <section class="section reveal" aria-labelledby="sobre-title">
+    <section class="section reveal" id="sobre" aria-labelledby="sobre-title">
       <div class="container">
         <h2 id="sobre-title">Sobre o Projeto</h2>
         <p class="section-text">
@@ -192,7 +197,7 @@
           <li>✅ Responder perguntas sobre Carbon Free e ESG da NEOOH</li>
           <li>✅ Responder perguntas sobre CRI, debêntures e ofertas públicas</li>
           <li>✅ Usar apenas informações documentadas e verificáveis</li>
-          <li>✅ Demonstrar arquitetura multiagente com orquestração</li>
+          <li>✅ Demonstrar arquitetura multiagente centrada em um agente único integrador</li>
         </ul>
       </div>
     </section>
@@ -201,70 +206,139 @@
     <section class="section reveal" id="agentes" aria-labelledby="arquitetura-title">
       <div class="container">
         <h2 id="arquitetura-title">Arquitetura Multiagente</h2>
+        <p class="section-text">
+          A pergunta chega direto ao Agente NEOOH, que reúne orquestração e especialização internamente para
+          responder sem precisar de múltiplos agentes externos.
+        </p>
         <div class="flow">
           <article class="flow-card flow-card--user">
             <h3>[USUÁRIO]</h3>
+            <p>Digita a pergunta sobre NEOOH.</p>
           </article>
           <div class="flow-arrow">↓</div>
-          <article class="flow-card flow-card--orq">
-            <h3>[AGENTE ORQUESTRADOR]</h3>
-            <p>Recebe a pergunta, analisa o tema e direciona para o especialista correto.</p>
+          <article class="flow-card flow-card--agent">
+            <h3>[AGENTE NEOOH]</h3>
+            <p>Analisa tema, roteia internamente e responde com o domínio correto.</p>
+            <ul class="agent-expertise">
+              <li><strong>Ofertas Públicas</strong> — CRI, Debêntures, Mercado Capitais</li>
+              <li><strong>ESG & Carbon Free</strong> — Carbon Free, Instituto NEOOH, Governança</li>
+            </ul>
           </article>
-          <div class="flow-split">
-            <div class="flow-branch">
-              <div class="flow-arrow">↓</div>
-              <article class="flow-card flow-card--esp1">
-                <h3>[ESPECIALISTA 1]</h3>
-                <p><strong>Ofertas Públicas</strong><br />CRI, Debêntures, Mercado Capitais</p>
-              </article>
-            </div>
-            <div class="flow-branch">
-              <div class="flow-arrow">↓</div>
-              <article class="flow-card flow-card--esp2">
-                <h3>[ESPECIALISTA 2]</h3>
-                <p><strong>ESG & Carbon Free</strong><br />Carbon Free, Instituto NEOOH, Governança</p>
-              </article>
-            </div>
-          </div>
           <div class="flow-arrow">↓</div>
           <article class="flow-card flow-card--data">
             <h3>[DATA STORE]</h3>
             <p>Base documental com PDFs públicos da NEOOH indexados no Vertex AI.</p>
           </article>
         </div>
+        <p class="section-note flow-note">
+          Todo o fluxo é entregue por um mesmo agente que combina classificação de tema, expertise e acesso ao Data Store verificado. Não há um agente orquestrador separado.
+        </p>
       </div>
     </section>
 
-    <!-- SEÇÃO 7: ÁREA RESERVADA PARA FUTURA INTEGRAÇÃO COM IA -->
-    <section class="section section--alt reveal" aria-labelledby="ia-title">
+    <section class="section section--flow reveal" aria-labelledby="fluxo-title">
       <div class="container">
-        <h2 id="ia-title">Converse com o Agente NEOOH</h2>
-        <p class="section-text">[ Área reservada para integração com Vertex AI Agent Builder ]</p>
-        <div class="ia-placeholder">
-          <div class="ia-placeholder__icon">🤖</div>
-          <p>
-            Esta seção será integrada ao agente desenvolvido no Vertex AI Agent Builder. Em produção, o usuário
-            poderá enviar perguntas e receber respostas baseadas nos documentos públicos da NEOOH.
-          </p>
-          <span class="badge badge--dev">Em desenvolvimento</span>
+        <h2 id="fluxo-title">Fluxo do Usuário</h2>
+        <p class="section-text">
+          O usuário pergunta direto ao Agente NEOOH, que combina orquestração, expertise em temas estratégicos e acesso ao
+          Data Store oficial para responder sem abrir mão da confiabilidade.
+        </p>
+        <div class="flow-path">
+          <article>
+            <span role="img" aria-hidden="true">🧭</span>
+            <h3>1. Pergunta</h3>
+            <p>O usuário escreve uma dúvida sobre Ofertas Públicas ou ESG & Carbon Free.</p>
+          </article>
+          <article>
+            <span role="img" aria-hidden="true">🧠</span>
+            <h3>2. Agente único</h3>
+            <p>Processa o tema, aplica buckets de prompt e consulta o Data Store indexado no Vertex AI.</p>
+          </article>
+          <article>
+            <span role="img" aria-hidden="true">📚</span>
+            <h3>3. Resposta documentada</h3>
+            <p>Devolve uma resposta embasada e, quando necessário, sugere referências oficiais.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 8: DIFERENCIAIS DO PROJETO -->
+   
+    <!-- SEÇÃO 7: DIFERENCIAIS DO PROJETO -->
     <section class="section reveal" id="diferenciais" aria-labelledby="diferenciais-title">
       <div class="container">
         <h2 id="diferenciais-title">Diferenciais</h2>
         <div class="diff-grid">
           <article class="diff-card"><h3>🎯 Sem Alucinação</h3><p>O agente responde apenas com base no Data Store documentado.</p></article>
           <article class="diff-card"><h3>📚 Base Documental Real</h3><p>Alimentado com fontes públicas oficiais da NEOOH.</p></article>
-          <article class="diff-card"><h3>🏗️ Arquitetura Profissional</h3><p>Orquestrador + 2 especialistas no Vertex AI.</p></article>
+          <article class="diff-card"><h3>🏗️ Arquitetura Profissional</h3><p>Agente único multi-expertise no Vertex AI, com roteamento interno.</p></article>
           <article class="diff-card"><h3>🌿 Tema Relevante</h3><p>ESG e mercado de capitais são temas estratégicos do setor.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 9: REFERÊNCIAS COM LINKS OFICIAIS -->
+    <!-- SEÇÃO: ORIENTAÇÃO, MENTORIA E PATROCÍNIO -->
+    <section class="section reveal" id="mentoria">
+      <div class="container">
+        <div class="mentoria-card-pro">
+
+          <h2>🎓 Orientação, Mentoria & Parceria</h2>
+
+          <p class="mentoria-text">
+            Este projeto foi desenvolvido no contexto do Bootcamp de LLMs com Inteligência Artificial,
+            com orientação da professora
+            <strong>
+              <a href="https://www.linkedin.com/in/alanis-urquisa/" target="_blank">
+                Alanis Urquisa
+              </a>
+            </strong>,
+            cuja mentoria foi essencial para a definição da arquitetura multiagente e evolução técnica da equipe.
+          </p>
+
+          <!-- BLOCO DE PARCERIA -->
+          <div class="mentoria-partners">
+
+            <!-- Professora -->
+            <div class="partner-card">
+              <div class="partner-icon">👩‍🏫</div>
+              <div>
+                <strong>Mentoria Acadêmica</strong>
+                <p>
+                  <a href="https://www.linkedin.com/in/alanis-urquisa/" target="_blank">
+                    Alanis Urquisa
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <!-- SoulCode -->
+            <div class="partner-card">
+                <div class="partner-logo">
+                  <img src="{{ url_for('static', filename='assets/soulcode.png') }}" alt="SoulCode Academy">
+                </div>
+              <div>
+                <strong>Bootcamp & Patrocínio</strong>
+                <p>
+                  <a href="https://www.linkedin.com/company/soulcodeacademy/" target="_blank">
+                    SoulCode Academy
+                  </a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mentoria-badges">
+            <span class="badge badge--mentoria">Mentoria Acadêmica</span>
+            <span class="badge badge--soulcode">Bootcamp SoulCode</span>
+            <span class="badge badge--ia">IA Generativa</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 8: REFERÊNCIAS COM LINKS OFICIAIS -->
     <section class="section section--alt reveal" id="referencias" aria-labelledby="referencias-title">
       <div class="container">
         <h2 id="referencias-title">Referências</h2>
@@ -280,28 +354,6 @@
     </section>
   </main>
 
-  <!-- WIDGET FLUTUANTE: AGENTE SEMPRE VISÍVEL NO CANTO INFERIOR DIREITO -->
-  <aside class="agent-float" aria-label="Widget flutuante do agente">
-    <div class="agent-float__header">
-      <strong>🤖 Agente NEOOH</strong>
-      <span>Online</span>
-    </div>
-    <p class="agent-float__text">
-      Assistente em modo protótipo. Esta área permanecerá visível durante toda a navegação.
-    </p>
-    <div id="agent-float-messages" class="agent-float__messages" aria-live="polite">
-      <div class="agent-msg agent-msg--agent">
-        Olá! Sou o assistente do protótipo. Posso responder com base no Data Store documental da NEOOH.
-      </div>
-    </div>
-    <form id="agent-float-form" class="agent-float__form">
-      <label for="agent-float-input" class="sr-only">Pergunta para o agente</label>
-      <input id="agent-float-input" type="text" placeholder="Digite sua pergunta..." />
-      <button type="submit">Perguntar</button>
-    </form>
-    <small class="agent-float__status">Base: Data Store documental da NEOOH</small>
-  </aside>
-
   <!-- SEÇÃO 10: FOOTER INSTITUCIONAL DO PROJETO -->
   <footer class="footer">
     <div class="container">
@@ -310,12 +362,46 @@
     </div>
   </footer>
 
-  <!--
-    Arquivo opcional:
-    - agents-data.js: fornece base de respostas do chat.
-    - Se remover, o chat continua funcionando, mas responderá apenas fallback genérico.
-  -->
-  <script src="agents-data.js"></script>
-  <script src="script.js"></script>
+  <!-- INTEGRAÇÃO NATIVA DO DIALOGFLOW MESSENGER (VERSÃO FUNCIONAL) -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <df-messenger
+    project-id="bootcam-llm-ai3"
+    agent-id="5688b4d8-4a0d-44e6-bc68-186e09039d8e"
+    language-code="pt-br"
+    max-query-length="-1">
+    <df-messenger-chat-bubble
+      chat-title="🤖 Agente NEOOH"
+      icon="{{ url_for('static', filename='assets/soulcode.png') }}">
+    </df-messenger-chat-bubble>
+  </df-messenger>
+  <style>
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+
+      /* Estilização customizada para o tema do Grupo Marte */
+      --df-messenger-font-family: 'Inter', sans-serif;
+      --df-messenger-chat-background: rgba(15, 15, 30, 0.95);
+      --df-messenger-titlebar-background: rgba(10, 8, 26, 0.95);
+      --df-messenger-titlebar-font-color: #ffffff;
+      --df-messenger-titlebar-icon-color: #ffffff;
+      --df-messenger-message-bot-background: rgba(91, 44, 125, 0.85);
+      --df-messenger-message-bot-font-color: #ffffff;
+      --df-messenger-message-user-background: rgba(233, 30, 140, 0.85);
+      --df-messenger-message-user-font-color: #ffffff;
+      --df-messenger-chat-bubble-background: #e91e8c;
+      --df-messenger-send-icon-color: #e91e8c;
+
+      /* Acabamento refinado imitando o widget antigo */
+      --df-messenger-window-border-radius: 16px;
+      --df-messenger-window-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      --df-messenger-titlebar-title-font-weight: 700;
+      --df-messenger-message-bubble-border-radius: 12px;
+    }
+  </style>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

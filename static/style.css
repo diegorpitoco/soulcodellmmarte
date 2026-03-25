@@ -11,19 +11,19 @@
    Para mudar a identidade visual, ajuste apenas este bloco.
 ================================================== */
 :root {
-  --roxo-escuro: #4a1a6b;
+  --roxo-escuro: #310b4f; /* Mais escuro para maior contraste */
   --roxo-medio: #5b2c7d;
   --rosa-forte: #d946a6;
-  --rosa-neon: #e91e8c;
+  --rosa-neon: #ff1fb3; /* Rosa mais vibrante e elétrico */
   --branco: #ffffff;
-  --creme: #efedde;
+  --creme: #fafafa; /* Branco suave para textos, melhor contraste */
   --azul: #0000ff;
   --marte-escuro: #c1440e;
   --marte-claro: #ff7b54;
 
   --fundo-card: rgba(255, 255, 255, 0.05);
   --borda-card: rgba(255, 255, 255, 0.18);
-  --texto-soft: rgba(255, 255, 255, 0.85);
+  --texto-soft: #f0f0f0; /* Remove transparência para nitidez */
   --sombra: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
@@ -35,6 +35,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 18px; /* Aumenta a base de todas as fontes do site (padrão é 16px) */
 }
 
 body {
@@ -71,6 +72,18 @@ body {
   height: 100%;
   z-index: 0;
   display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Marte em camada separada para preservar o visual antigo */
@@ -195,6 +208,7 @@ h1,
 h2,
 h3 {
   line-height: 1.2;
+  text-shadow: 0 0 8px rgba(233, 30, 140, 0.35); /* Adiciona um brilho para destacar o texto */
 }
 
 h1 {
@@ -237,6 +251,7 @@ li {
 .logo {
   font-weight: 800;
   letter-spacing: 0.02em;
+  font-size: 16px;
 }
 
 .badge {
@@ -245,6 +260,10 @@ li {
   border-radius: 999px;
   padding: 6px 12px;
   font-size: 0.82rem;
+}
+
+.header .badge {
+  font-size: 13px;
 }
 
 .nav {
@@ -257,7 +276,7 @@ li {
   color: var(--creme);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 14.4px;
   padding: 8px 10px;
   border-radius: 999px;
   cursor: pointer;
@@ -601,11 +620,157 @@ li {
   gap: 8px;
 }
 
-.flow-card--orq { background: rgba(91, 44, 125, 0.5); }
+.flow-card--agent { background: rgba(233, 30, 140, 0.35); }
 .flow-card--esp1 { background: rgba(0, 0, 255, 0.32); }
 .flow-card--esp2 { background: rgba(46, 125, 50, 0.35); }
 .flow-card--data { background: rgba(249, 168, 37, 0.35); }
 .flow-card--user { background: rgba(255, 255, 255, 0.1); }
+
+.agent-expertise {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.agent-expertise li {
+  padding-left: 12px;
+  position: relative;
+}
+
+.agent-expertise li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--rosa-neon);
+}
+
+.section-note {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 700px;
+  text-align: center;
+}
+
+/* ==================================================
+   SEÇÃO PROFISSIONAL DE MENTORIA / PARCERIA
+================================================== */
+.mentoria-card-pro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 32px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.mentoria-card-pro h2 {
+  margin-bottom: 14px;
+}
+
+.mentoria-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: var(--texto-soft);
+}
+
+.mentoria-card-pro a,
+.partner-card a {
+  color: #ff4dc4;
+  font-weight: 700;
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(255, 77, 196, 0.35);
+}
+
+.mentoria-card-pro a:hover,
+.partner-card a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+.mentoria-partners {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.partner-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+}
+
+.partner-icon {
+  font-size: 1.8rem;
+}
+
+.partner-logo img {
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  object-fit: contain;
+}
+
+.partner-card strong {
+  display: block;
+  color: #0d0d0d;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.partner-card p {
+  margin: 0;
+  color: #2c2c2c;
+}
+
+.mentoria-badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.badge--mentoria {
+  background: rgba(255, 77, 196, 0.15);
+  border: 1px solid rgba(255, 77, 196, 0.4);
+  color: #ff4dc4;
+}
+
+.badge--soulcode {
+  background: rgba(0, 200, 255, 0.15);
+  border: 1px solid rgba(0, 200, 255, 0.4);
+  color: #00c8ff;
+}
+
+.badge--ia {
+  background: rgba(140, 82, 255, 0.15);
+  border: 1px solid rgba(140, 82, 255, 0.4);
+  color: #8c52ff;
+}
 
 /* ==================================================
    SEÇÃO 7 - ÁREA IA
@@ -679,110 +844,41 @@ li {
   margin-top: 4px;
 }
 
-/* ==================================================
-   WIDGET FLUTUANTE DO AGENTE
-   Fica fixo no canto inferior direito da tela.
-================================================== */
-.agent-float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width: min(360px, calc(100vw - 24px));
-  z-index: 30;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  padding: 12px;
-  will-change: transform;
+.section--flow {
+  background: rgba(6, 3, 12, 0.65);
 }
 
-.agent-float__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+.flow-path {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.flow-path article {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.flow-path span {
+  font-size: 1.7rem;
+  display: inline-block;
   margin-bottom: 8px;
 }
 
-.agent-float__header span {
-  font-size: 0.74rem;
-  color: #9affc8;
-  border: 1px solid rgba(154, 255, 200, 0.35);
-  border-radius: 999px;
-  padding: 2px 8px;
+.flow-path h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
 }
 
-.agent-float__text {
-  font-size: 0.84rem;
-  margin-bottom: 9px;
-}
-
-.agent-float__messages {
-  max-height: 210px;
-  overflow-y: auto;
-  display: grid;
-  gap: 8px;
-  padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  margin-bottom: 9px;
-}
-
-.agent-msg {
-  max-width: 90%;
-  border-radius: 12px;
-  padding: 8px 10px;
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
-.agent-msg--agent {
-  justify-self: start;
-  color: #f2e7ff;
-  background: rgba(91, 44, 125, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.agent-msg--user {
-  justify-self: end;
-  color: #fff;
-  background: rgba(233, 30, 140, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.agent-float__form {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 7px;
-}
-
-.agent-float__form input {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--branco);
-  padding: 10px;
-}
-
-.agent-float__form button {
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 12px;
-  color: var(--branco);
-  font-weight: 700;
-  cursor: pointer;
-  background: linear-gradient(100deg, var(--rosa-neon), var(--rosa-forte));
-}
-
-.agent-float__status {
+.flow-note {
+  text-align: center;
+  max-width: 520px;
+  margin-inline: auto;
   display: block;
-  margin-top: 8px;
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.76);
 }
 
 /* ==================================================
@@ -868,10 +964,51 @@ li {
     flex-wrap: nowrap;
   }
 
-  .crew-grid,
-  .diff-grid {
-    grid-template-columns: 1fr;
-  }
+.crew-grid,
+.diff-grid {
+  grid-template-columns: 1fr;
+}
+
+.crew-banner {
+  position: relative;
+  border-radius: 28px;
+  padding: 3rem 2rem 2.5rem;
+  background:
+    linear-gradient(130deg, rgba(5, 4, 12, 0.9), rgba(15, 15, 40, 0.85)),
+    url("../assets/astronautas.jpeg") center/cover;
+  color: var(--branco);
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.crew-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(5, 5, 12, 0.6));
+  mix-blend-mode: soft-light;
+}
+
+.crew-banner > * {
+  position: relative;
+  z-index: 1;
+}
+
+.crew-banner__badge {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 14px;
+  margin-top: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+}
 
   .mars-orbit {
     width: 340px;
@@ -879,11 +1016,4 @@ li {
     top: 18%;
     right: -36px;
   }
-
-  .agent-float {
-    right: 12px;
-    bottom: 12px;
-    width: calc(100vw - 24px);
-  }
 }
-
